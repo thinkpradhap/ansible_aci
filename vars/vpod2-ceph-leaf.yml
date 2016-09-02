@@ -1,0 +1,14 @@
+---
+default_gws:
+          - name: vpod2-cp-ceph
+            gws:
+             - gw: "10.5.3.1"
+               vpod: "vpod2-cp-ceph-pub"
+               vrf_name: "vpod2-cp:vpod2-cp"
+             - gw: "10.5.3.129"
+               vpod: "vpod2-cp-ceph-priv"
+               vrf_name: "vpod2-cp:vpod2-cp"
+
+ipv4_addr_list:
+           - 8.8.8.8
+           - 10.203.218.177

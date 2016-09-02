@@ -1,0 +1,11 @@
+---
+default_gws:
+          - name: vpod2-cp
+            gws:
+             - gw: "10.5.2.1"
+               vpod: "vpod2-cp-service"
+               vrf_name: "vpod2-cp:vpod2-cp"
+
+ipv4_addr_list:
+           - 8.8.8.8
+           - 10.203.218.177

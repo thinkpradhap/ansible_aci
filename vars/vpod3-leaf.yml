@@ -1,0 +1,11 @@
+---
+default_gws:
+          - name: vpod3-cp
+            gws:
+                - gw: "10.5.5.1"
+                  vpod: "vpod3-cp-service"
+                  vrf_name: "vpod3-cp:vpod3-cp"
+
+ipv4_addr_list:
+           - 8.8.8.8
+           - 10.203.218.177

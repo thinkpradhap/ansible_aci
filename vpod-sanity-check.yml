@@ -1,0 +1,159 @@
+---
+#ansible-playbook -i pod8-aci-inv vpod-sanity-check.yml
+
+# REQ1: vPOD0 infra-node to ALL vpods reachability test
+- name: Run Ping from Infra Node to all vpods
+  hosts: infra-node
+  gather_facts: no
+  tags: infra_ping_all_vpods
+
+  vars_files:
+    - vars/all.yml  
+  tasks:
+   - name: Run ping checks from infra node
+     raw: 'ping  "{{ item.1.gw }}" -c 2'
+     #debug: msg={{ item.0.name }} {{ item.1.vrf_name }} {{ item.1.gw }} {{ item.1.vpod }}
+     with_subelements:
+                 - "{{ default_gws }}"
+                 - gws
+     register: infra_ping_out
+     #ignore_errors: True
+
+   #- name: Check Ping Output
+   #  debug: var=infra_ping_out
+
+# REQ2: Go to each vPOD-X and ping from def-gw to outside (External IP)
+# vPOD0-CP
+- name: Ping External IP from vPOD0  
+  hosts: vpod0-leaf
+  gather_facts: no
+  tags: vpod0_leaf_ping_out
+
+  vars_files:
+    - vars/vpod0-leaf.yml
+  tasks:
+    - include: tasks/leaf_ping_check.yml ext_ipv4_addr={{ addr }}
+      with_items: "{{ ipv4_addr_list }}"
+      loop_control:
+        loop_var: addr
+      #ignore_errors: True
+
+#vPOD1-CP 
+- name: Ping External IP from vPOD1-CP
+  hosts: vpod1-cp-leaf
+  gather_facts: no
+  tags: vpod1_cp_leaf_ping_out
+
+  vars_files:
+         - vars/vpod1-cp-leaf.yml
+  tasks:
+    - include: tasks/leaf_ping_check.yml ext_ipv4_addr={{ addr }}
+      with_items: "{{ ipv4_addr_list }}"
+      loop_control:
+        loop_var: addr
+      #ignore_errors: True
+     
+#vPOD1-DP 
+- name: Ping External IP from vPOD1-DP
+  hosts: vpod1-dp-leaf
+  gather_facts: no
+  tags: vpod1_dp_leaf_ping_out
+
+  vars_files:
+         - vars/vpod1-dp-leaf.yml
+  tasks:
+    - include: tasks/leaf_ping_check.yml ext_ipv4_addr={{ addr }}
+      with_items: "{{ ipv4_addr_list }}"
+      loop_control:
+        loop_var: addr
+      #ignore_errors: True
+
+#vPOD2   
+- name: Ping External IP from vPOD2-CP
+  hosts: vpod2-leaf
+  gather_facts: no
+  tags: vpod2_leaf_ping_out
+
+  vars_files:
+         - vars/vpod2-leaf.yml
+  tasks:
+    - include: tasks/leaf_ping_check.yml ext_ipv4_addr={{ addr }}
+      with_items: "{{ ipv4_addr_list }}"
+      loop_control:
+        loop_var: addr
+      #ignore_errors: True
+
+#vPOD2-ceph
+- name: Ping External IP from vPOD2-ceph
+  hosts: vpod2-ceph-leaf
+  gather_facts: no
+  tags: vpod2_ceph_leaf_ping_out
+
+  vars_files:
+         - vars/vpod2-ceph-leaf.yml
+  tasks:
+    - include: tasks/leaf_ping_check.yml ext_ipv4_addr={{ addr }}
+      with_items: "{{ ipv4_addr_list }}"
+      loop_control:
+        loop_var: addr
+      #ignore_errors: True
+
+#vPOD3
+- name: Ping External IP from vPOD3-CP
+  hosts: vpod3-leaf
+  gather_facts: no
+  tags: vpod3_leaf_ping_out
+
+  vars_files:
+         - vars/vpod3-leaf.yml
+  tasks:
+    - include: tasks/leaf_ping_check.yml ext_ipv4_addr={{ addr }}
+      with_items: "{{ ipv4_addr_list }}"
+      loop_control:
+        loop_var: addr
+      #ignore_errors: True
+
+#vPOD100-CP
+- name: Ping External IP from vPOD100-CP
+  hosts: vpod100-leaf
+  gather_facts: no
+  tags: vpod100_leaf_ping_out
+
+  vars_files:
+         - vars/vpod100-leaf.yml
+  tasks:
+    - include: tasks/leaf_ping_check.yml ext_ipv4_addr={{ addr }}
+      with_items: "{{ ipv4_addr_list }}"
+      loop_control:
+        loop_var: addr
+      #ignore_errors: True
+
+#vPOD101-CP
+- name: Ping External IP from vPOD101-CP
+  hosts: vpod101-cp-leaf
+  gather_facts: no
+  tags: vpod101_cp_leaf_ping_out
+
+  vars_files:
+         - vars/vpod101-cp-leaf.yml
+  tasks:
+    - include: tasks/leaf_ping_check.yml ext_ipv4_addr={{ addr }}
+      with_items: "{{ ipv4_addr_list }}"
+      loop_control:
+        loop_var: addr
+      #ignore_errors: True
+
+#vPOD101-DP
+- name: Ping External IP from vPOD101-DP
+  hosts: vpod101-dp-leaf
+  gather_facts: no
+  tags: vpod101_dp_leaf_ping_out
+
+  vars_files:
+         - vars/vpod101-dp-leaf.yml
+  tasks:
+    - include: tasks/leaf_ping_check.yml ext_ipv4_addr={{ addr }}
+      with_items: "{{ ipv4_addr_list }}"
+      loop_control:
+        loop_var: addr
+      #ignore_errors: True

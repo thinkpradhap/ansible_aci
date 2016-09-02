@@ -1,0 +1,34 @@
+---
+default_gws:
+          - name: vpod100-cp
+            gws:
+             - gw: "10.202.221.129"
+               vpod: "vpod100-api"
+               vrf_name: "vpod100-cp:vpod100-api-cp"
+             - gw: "10.5.49.1"
+               vpod: "vpod100-data-storage"
+               vrf_name: "vpod100-cp:vpod100-oos-central-cp"
+             - gw: "10.5.48.1"
+               vpod: "vpod100-infra-mgmt"
+               vrf_name: "vpod100-cp:vpod100-mgmt-cp"
+             - gw: "10.5.50.1"
+               vpod: "vpod100-kafka-data"
+               vrf_name: "vpod100-cp:vpod100-oos-central-cp"
+             - gw: "10.5.53.1"
+               vpod: "vpod100-mgmt-nw"
+               vrf_name: "vpod100-cp:vpod100-mgmt-cp"
+             - gw: "10.5.54.1"
+               vpod: "vpod100-node-mon"
+               vrf_name: "vpod100-cp:vpod100-mgmt-cp"
+             - gw: "10.5.51.1"
+               vpod: "vpod100-services-nw"
+               vrf_name: "vpod100-cp:vpod100-oos-central-cp"
+             - gw: "10.202.221.1"
+               vpod: "vpod100-streamsets"
+               vrf_name: "vpod100-cp:vpod100-streamsets-cp"
+             - gw: "10.5.52.1"
+               vpod: "vpod100-synthetic"
+               vrf_name: "vpod100-cp:vpod100-streamsets-cp"
+
+ipv4_addr_list:
+           - 8.8.8.8

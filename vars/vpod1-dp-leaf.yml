@@ -1,0 +1,17 @@
+---
+default_gws:
+          - name: vpod1-dp
+            gws:
+                - gw: "10.5.1.1"
+                  vpod: "vpod1-dp-cis-apps"
+                  vrf_name: "vpod1-dp:vpod1-dp"
+                - gw: "10.5.0.1"
+                  vpod: "vpod1-dp-cis-infra"
+                  vrf_name: "vpod1-dp:vpod1-dp"
+                - gw: "10.5.1.145"
+                  vpod: "vpod1-dp-oss-mgmt"
+                  vrf_name: "vpod1-dp:vpod1-dp"
+
+ipv4_addr_list:
+           - 8.8.8.8
+           - 10.203.218.177

@@ -1,0 +1,20 @@
+---
+default_gws:
+          - name: vpod101-dp
+            gws:
+             - gw: "10.5.12.65"
+               vpod: "vpod101-dp-cis-infoblox-ctrl"
+               vrf_name: "vpod101-dp:vpod101-dp"
+             - gw: "10.5.14.1"
+               vpod: "vpod101-dp-cis-infra"
+               vrf_name: "vpod101-dp:vpod101-dp"
+             - gw: "10.5.12.49"
+               vpod: "vpod101-dp-oss-mgmt"
+               vrf_name: "vpod101-dp:vpod101-dp"
+             - gw: "10.5.15.1"
+               vpod: "vpod101-dp-service-network"
+               vrf_name: "vpod101-dp:vpod101-dp"
+
+ipv4_addr_list:
+           - 8.8.8.8
+           - 10.203.218.177

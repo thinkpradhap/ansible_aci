@@ -1,0 +1,2 @@
+ping_fail: "'100.00% packet loss' in leaf_ping_out_vrf.stdout or 'bad context' in leaf_ping_out_vrf.stdout \
+                        or 'Invalid source address' in leaf_ping_out_vrf.stdout"

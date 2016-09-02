@@ -1,0 +1,11 @@
+---
+- name: Ping check to {{ ext_ipv4_addr }} 
+  raw: 'iping -V "{{ item.1.vrf_name }}" -S "{{ item.1.gw }}" "{{ ext_ipv4_addr }}" -c 2'
+  with_subelements:
+             - "{{ default_gws }}"
+             - gws
+  register: leaf_ping_out_vrf
+  failed_when: "{{ ping_fail }}"
+  
+#- name: Ping Internet from vpod tenant vrf
+#  debug: var=leaf_ping_out_vrf
